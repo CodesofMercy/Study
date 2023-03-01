@@ -1,0 +1,87 @@
+1. Какие классы хранения создают переменные, локальные по отношению к функции, которая их содержит?
+
+2. Какие классы хранения создают переменные, которые сохраняются на протяении выполнения содержащей их программы?
+
+3. Какой класс хранения создает переменные, которые могут использоваться в нескольких файлах? Только в одном файле?
+
+4. Какой вид связывания имеют переменные с областью видимости в пределах блока?
+
+5. Для чего используется ключевое слово extern?
+
+6. Взгляните на следующий фрагмент кода:
+
+	int * pl = (int *) malloc(1OO * sizeof(int));
+
+		Чем от него отличается показанный ниже оператор в смысле конечного результата?
+
+	int * pl = (int *) calloc(1OO, sizeof(int));
+
+7. Каким функциям известна каждая переменная в следующем коде? Если ли в коде ошибки?
+
+	/* файл 1 */
+	int daisy;
+	int main(void)
+	{
+		int lily;
+		...;
+	}
+	int petal()
+	{
+		extern int daisy, lily;
+		...;
+	}
+
+	/* файл 2 */
+	extern int daisy;
+	static int lily;
+	int rose;
+	int stem()
+	{
+		int rose;
+		...;
+	}
+	void root()
+	{
+		...;
+	}
+
+8. Что выведет следующая программа?
+
+	#include <stdio.h>
+	char color= 'В';
+	void first(void);
+	void second(void);
+	int main(void)
+	{
+		extern char color;
+		printf("color в main() равно %c\n", color);
+		first ();
+		printf("color в main() равно %c\n", color);
+		second();
+		printf("color в main() равно %c\n", color);
+		return О;
+	{
+
+	void first(void)
+	{
+		char color;
+		color = 'R';
+		printf("color в first() равно %c\n", color);
+	}
+
+	void second(void)
+	{
+		color = 'G';
+		printf("color в second() равно %c\n", color);
+	}
+
+9. Файл начинается со следующих объявлений:
+
+	static int plink;
+	int value_ct(const int arr[], int value, int n);
+
+		а. Что говорят эти объявления о намерениях программиста?
+
+		б. Увеличит ли защиту значений в вызывающей программе замена объявлений int и int n объявлениями const int и const int n?
+
+
